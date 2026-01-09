@@ -1,0 +1,5 @@
+services:
+  alerting:
+    build: .
+    volumes:
+      - ./data:/app/data
