@@ -1,0 +1,11 @@
+services:
+
+  # Сервис для Jupyter + Spark
+  spark-jupyter:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    container_name: wady_spark_jupyter
+    ports:
+      - "8888:8888"   # Порт Jupyter Lab
+      - "4040:4040"   # Порт Spark UI
+    volumes:
+      - ./work:/home/jovyan/work
