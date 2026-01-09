@@ -1,0 +1,3 @@
+docker-compose exec mongodb mongosh -u user -p pass
+use tiktok_db
+exit
