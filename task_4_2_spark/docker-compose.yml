@@ -1,0 +1,27 @@
+services:
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: my_postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=PostgreSQL_db
+    ports:
+      - "5432:5432"   
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  spark-jupyter:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    container_name: my_spark_jupyter
+    ports:
+      - "8888:8888"  
+      - "4040:4040"   
+    volumes:
+      - ./work:/home/jovyan/work  
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
